@@ -13,7 +13,15 @@ class AsyncForm {
    * через registerEvents()
    * */
   constructor(element) {
-
+    try{
+      if(!element){
+        throw new Error("Передан пустой элемент");
+      }
+      this.element = element;
+      this.registerEvents();
+    }catch(e){
+      console.log(e);
+    }
   }
 
   /**
@@ -21,7 +29,10 @@ class AsyncForm {
    * вызывает метод submit()
    * */
   registerEvents() {
-
+    this.element.addEventListener("submit", (e) => {
+      e.preventDefault();
+      this.submit()
+    })
   }
 
   /**
@@ -31,8 +42,8 @@ class AsyncForm {
    *  'название поля формы 2': 'значение поля формы 2'
    * }
    * */
-  getData() {
-
+  getData() {  
+    return new FormData(this.element);
   }
 
   onSubmit(options){
@@ -44,6 +55,6 @@ class AsyncForm {
    * данные, полученные из метода getData()
    * */
   submit() {
-
+    this.onSubmit(this.getData);
   }
 }

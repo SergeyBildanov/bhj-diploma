@@ -14,7 +14,16 @@ class AccountsWidget {
    * необходимо выкинуть ошибку.
    * */
   constructor( element ) {
-
+    try{
+      if(element === undefined){
+        throw new Error("Передан пустой объект")
+      }
+      this.element = element;
+      this.registerEvents();
+      this.update();
+    }catch(e){
+      console.log(e);
+    }
   }
 
   /**
@@ -25,7 +34,16 @@ class AccountsWidget {
    * вызывает AccountsWidget.onSelectAccount()
    * */
   registerEvents() {
-
+    let accountButton = document.querySelector(".create-account");
+    accountButton.addEventListener("click", () => {
+      App.getModal("modal-new-account").open();
+    })
+    let accounts = document.querySelectorAll(".account");
+    for(let i=0; i<accounts.length; i++){
+      accounts[i].addEventListener("click", () => {
+        this.onSelectAccount();
+      } )
+    }
   }
 
   /**
@@ -39,7 +57,7 @@ class AccountsWidget {
    * метода renderItem()
    * */
   update() {
-
+    
   }
 
   /**
