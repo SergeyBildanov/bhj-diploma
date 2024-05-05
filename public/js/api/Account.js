@@ -5,16 +5,15 @@
  * */
 class Account extends Entity {
   static URL = "/account";
+  
   /**
    * Получает информацию о счёте
    * */
   static get(id, callback){
-    let options = {
-      url: this.URL,
-      data: id,
+    createRequest({
+      url: this.URL + `/${id}`,
       method: "GET",
       callback: callback
-    };
-    createRequest(options);
+    });
   }
 }

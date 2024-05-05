@@ -2,32 +2,46 @@
  * Основная функция для совершения запросов
  * на сервер.
  * */
-const createRequest = (options = {url,data,method,callback}) => {
-    try{
-        const xhr = new XMLHttpRequest();
+const createRequest = ({ url, data, method, callback }) => {
+    const xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
-    if(options.method === 'GET'){
-        let string = `${options.url}?`
-        let keys = Object.keys(options.data);
-        for(let i=0; i< keys.length; i++){
-            string = string + options.data[keys[i]];
-            if(i !== keys.length - 1){
-                string = string + "&";
+    let add = `${url}?`
+    if (method === 'GET') {
+        if (data) {
+            let keys = Object.keys(data);
+            for (let i = 0; i < keys.length; i++) {
+                add = add + data[keys[i]];
+                if (i !== keys.length - 1) {
+                    add = add + "&";
+                }
             }
         }
-        xhr.open(options.method, string);
-        xhr.send();
-    }
-    else{
-        let formData = new FormData();
-        let keys = Object.keys(options.data);
-        for(let i=0; i< keys.length; i++){
-            formData.append(keys[i], options.data[keys[i]]);
+        try {
+            xhr.open(method, add);
+            xhr.send();
         }
-        xhr.open(options.method, options.url);
-        xhr.send(formData);
+        catch (e) {
+            callback(xhr.response);
+        }
     }
-    }catch(e){
-        callback(e, xhr.responseText);
+    else {
+        if (data) {
+            let formData = new FormData();
+            let keys = Object.keys(data);
+            for (let i = 0; i < keys.length; i++) {
+                formData.append(keys[i], data[keys[i]]);
+            }
+            try {
+                xhr.open(method, url);
+                xhr.send(formData);
+            }
+            catch (e) {
+                callback(xhr.response);
+            }
+        }
     }
+    xhr.addEventListener("load", (event) => {
+        event.preventDefault();
+        callback(xhr.response);
+    });
 };

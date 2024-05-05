@@ -12,15 +12,11 @@ class Modal {
    * необходимо выкинуть ошибку.
    * */
   constructor(element){
-    try{
       if(!element){
         throw new Error("Передан пустой объект");
       }
       this.element = element;
       this.registerEvents();
-    }catch(e){
-      console.log(e);
-    }
   }
 
   /**
@@ -32,7 +28,7 @@ class Modal {
     let events = this.element.querySelectorAll('[data-dismiss="modal"]');
     for(let i=0; i<events.length; i++){
       events[i].addEventListener("click", () => {
-        this.onClose(this.element);
+        this.onClose();
       })
     }
   }
@@ -41,8 +37,8 @@ class Modal {
    * Срабатывает после нажатия на элементы, закрывающие окно.
    * Закрывает текущее окно (Modal.close())
    * */
-  onClose(e) {
-    e.close();
+  onClose() {
+    this.close();
   }
   /**
    * Открывает окно: устанавливает CSS-свойство display

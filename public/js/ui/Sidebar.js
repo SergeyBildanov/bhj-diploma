@@ -1,5 +1,3 @@
-const { response } = require("express");
-
 /**
  * Класс Sidebar отвечает за работу боковой колонки:
  * кнопки скрытия/показа колонки в мобильной версии сайта
@@ -36,27 +34,39 @@ class Sidebar {
    * выходу устанавливает App.setState( 'init' )
    * */
   static initAuthLinks() {
-    const registerButton = document.querySelector(".menu-item_register")
-    const loginButton = document.querySelector(".menu-item_login")
-    const logoutButton = document.querySelector(".menu-item_register")
+    const menu = document.querySelector(".sidebar-menu");
+    menu.addEventListener("click", (e) => {
+      //console.log(e.target.closest(".menu-item_logout"));
+      if(e.target && e.target.closest(".menu-item_register")){
+        App.getModal("register").open();
+      }
+      if(e.target && e.target.closest(".menu-item_login")){
+        App.getModal("login").open();
+      }
+      if(e.target && e.target.closest(".menu-item_logout")){
+        User.logout((response)=>{
+          console.log(response);
+          if(response && response.success){
+            App.setState('init');
+          }
+        })
+      }
+    });
+}
+}
+/*const registerButton = document.querySelector(".menu-item_register");
+    const loginButton = document.querySelector(".menu-item_login");
+    const logoutButton = document.querySelector(".menu-item_logout");
     registerButton.addEventListener("click", ()=>{
-      let modal = this.getModal("modal-register");
-      modal.open();
-    })
+      App.getModal("register").open();
+    });
     loginButton.addEventListener("click", ()=>{
-      let modal = this.getModal("modal-login");
-      modal.open();
-    })
+      App.getModal("login").open();
+    });
     logoutButton.addEventListener("click", ()=>{
-      let current = User.current();
-      user.logout((err,response)=>{
-        if(response.success = true){
+      User.logout((response)=>{
+        if(response && response.success === true){
           App.setState("init");
         }
-        console.log(err);
-        console.log(response);
-      });
-
     })
-  }
-}
+  })*/

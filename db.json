@@ -5,6 +5,45 @@
       "email": "demo@demo",
       "password": "demo",
       "id": "1"
+    },
+    {
+      "id": "30cftbmwlv9qwsnj"
+    },
+    {
+      "id": "30cftbfclv9qxlsx"
+    },
+    {
+      "id": "30cftkb8lv9r400k"
+    },
+    {
+      "name": "serg",
+      "email": "serg@mail.ru",
+      "password": "trok",
+      "id": "30cft1egwlv9rdekw"
+    },
+    {
+      "name": "serg",
+      "email": "serg1@mail.ru",
+      "password": "trok",
+      "id": "30cftmhclv9rfa0o"
+    },
+    {
+      "name": "Serg",
+      "email": "serg2@mail.ru",
+      "password": "trok",
+      "id": "30cftpuolv9x1dn7"
+    },
+    {
+      "name": "Serg",
+      "email": "serg3@mail.ru",
+      "password": "trok",
+      "id": "30cftxzolv9yijm9"
+    },
+    {
+      "name": "Serg",
+      "email": "serg4@mail.ru",
+      "password": "trok",
+      "id": "30cft145wlv9yjsqo"
     }
   ],
   "accounts": [
@@ -22,6 +61,11 @@
       "name": "Бизнес",
       "user_id": "1",
       "id": "3"
+    },
+    {
+      "name": "Card",
+      "user_id": "30cft145wlv9yjsqo",
+      "id": "30cft8kolvtwnxgd"
     }
   ],
   "transactions": [
@@ -159,6 +203,114 @@
       "sum": 300000,
       "type": "expense",
       "user_id": "1"
+    },
+    {
+      "id": "30cft10uklvtx06th",
+      "type": "income",
+      "name": "23232",
+      "sum": 222,
+      "account_id": "30cft8kolvtwnxgd",
+      "user_id": "30cft145wlv9yjsqo",
+      "created_at": "2024-05-05T19:17:33.700Z"
+    },
+    {
+      "id": "30cftepclvtx4tnk",
+      "type": "income",
+      "name": "233232",
+      "sum": 222,
+      "account_id": "30cft8kolvtwnxgd",
+      "user_id": "30cft145wlv9yjsqo",
+      "created_at": "2024-05-05T19:21:09.919Z"
+    },
+    {
+      "id": "30cftcxwlvtx8xwf",
+      "type": "income",
+      "name": "2322",
+      "sum": 2,
+      "account_id": "30cft8kolvtwnxgd",
+      "user_id": "30cft145wlv9yjsqo",
+      "created_at": "2024-05-05T19:24:22.046Z"
+    },
+    {
+      "id": "30cftt2slvtxa50p",
+      "type": "income",
+      "name": "23232",
+      "sum": 22,
+      "account_id": "30cft8kolvtwnxgd",
+      "user_id": "30cft145wlv9yjsqo",
+      "created_at": "2024-05-05T19:25:17.928Z"
+    },
+    {
+      "id": "30cftw84lvtxax6t",
+      "type": "income",
+      "name": "23232",
+      "sum": 22,
+      "account_id": "30cft8kolvtwnxgd",
+      "user_id": "30cft145wlv9yjsqo",
+      "created_at": "2024-05-05T19:25:54.436Z"
+    },
+    {
+      "id": "30cftjxglvtxbmvp",
+      "type": "income",
+      "name": "2323",
+      "sum": 2,
+      "account_id": "30cft8kolvtwnxgd",
+      "user_id": "30cft145wlv9yjsqo",
+      "created_at": "2024-05-05T19:26:27.732Z"
+    },
+    {
+      "id": "30cftd9clvtxcyu0",
+      "type": "income",
+      "name": "23232",
+      "sum": 2,
+      "account_id": "30cft8kolvtwnxgd",
+      "user_id": "30cft145wlv9yjsqo",
+      "created_at": "2024-05-05T19:27:29.879Z"
+    },
+    {
+      "id": "30cft10swlvtxvzjb",
+      "type": "income",
+      "name": "23232",
+      "sum": 2,
+      "account_id": "30cft8kolvtwnxgd",
+      "user_id": "30cft145wlv9yjsqo",
+      "created_at": "2024-05-05T19:42:17.254Z"
+    },
+    {
+      "id": "30cftdywlvty35cx",
+      "type": "income",
+      "name": "2323",
+      "sum": 2,
+      "account_id": "30cft8kolvtwnxgd",
+      "user_id": "30cft145wlv9yjsqo",
+      "created_at": "2024-05-05T19:47:51.392Z"
+    },
+    {
+      "id": "30cftsk8lvty9vih",
+      "type": "income",
+      "name": "23232",
+      "sum": 22222,
+      "account_id": "30cft8kolvtwnxgd",
+      "user_id": "30cft145wlv9yjsqo",
+      "created_at": "2024-05-05T19:53:05.224Z"
+    },
+    {
+      "id": "30cftouclvtyruun",
+      "type": "income",
+      "name": "2332",
+      "sum": 2,
+      "account_id": "30cft8kolvtwnxgd",
+      "user_id": "30cft145wlv9yjsqo",
+      "created_at": "2024-05-05T20:07:04.174Z"
+    },
+    {
+      "id": "30cftaowlvtys1ft",
+      "type": "income",
+      "name": "2332",
+      "sum": 2,
+      "account_id": "30cft8kolvtwnxgd",
+      "user_id": "30cft145wlv9yjsqo",
+      "created_at": "2024-05-05T20:07:12.712Z"
     }
   ]
 }
