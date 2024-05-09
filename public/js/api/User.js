@@ -38,15 +38,14 @@ class User {
       url: this.URL + '/current',
       method: 'GET',
       responseType: 'json',
-      callback: (err, response) => {
-        console.log(response);
+      callback: (response) => {
         if(response && response.success){
           this.setCurrent(response.user);
         }
         else{
           this.unsetCurrent();
         }
-        callback(err, response);
+        callback(response);
       }
     });
   }

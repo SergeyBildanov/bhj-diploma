@@ -36,7 +36,6 @@ class Sidebar {
   static initAuthLinks() {
     const menu = document.querySelector(".sidebar-menu");
     menu.addEventListener("click", (e) => {
-      //console.log(e.target.closest(".menu-item_logout"));
       if(e.target && e.target.closest(".menu-item_register")){
         App.getModal("register").open();
       }
@@ -45,7 +44,6 @@ class Sidebar {
       }
       if(e.target && e.target.closest(".menu-item_logout")){
         User.logout((response)=>{
-          console.log(response);
           if(response && response.success){
             App.setState('init');
           }

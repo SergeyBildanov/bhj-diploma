@@ -38,11 +38,11 @@ class TransactionsPage {
    * */
   registerEvents() {
     this.element.addEventListener("click", (e) => {
-      if(e.target && e.target.classList.contains("remove-account")){
+      if(e.target && e.target.closest(".remove-account")){
         this.removeAccount();
       }
-      if(e.target && e.target.classList.contains("transaction__remove")){
-        this.removeTransaction();
+      if(e.target && e.target.closest(".transaction__remove")){
+        this.removeTransaction(e.target.closest(".transaction__remove").dataset.id);
       }
     })
   }
@@ -76,8 +76,8 @@ class TransactionsPage {
    * По удалению транзакции вызовите метод App.update(),
    * либо обновляйте текущую страницу (метод update) и виджет со счетами
    * */
-  removeTransaction( id ) {
-    if(confirm("Вы уверены, что хотите удалить текущий счет?")){
+  removeTransaction(id) {
+    if(confirm("Вы уверены, что хотите удалить текущую транзакцию?")){
       Transaction.remove({id}, (response)=>{
         if(response && response.success){
           App.update();
@@ -143,7 +143,7 @@ class TransactionsPage {
     if(minutes <= 9){
       minutes = "0" + minutes;
     }
-    return `${time.getDay()} ${monthName} ${time.getFullYear} в ${hours}:${minutes}`;
+    return `${time.getDay()} ${monthName} ${time.getFullYear()} в ${hours}:${minutes}`;
   }
 
   /**
@@ -157,7 +157,7 @@ class TransactionsPage {
           <span class="fa fa-money fa-2x"></span>
       </div>
       <div class="transaction__info">
-          <h4 class="transaction__title">Новый будильник</h4>
+          <h4 class="transaction__title">${item.name}</h4>
           <div class="transaction__date">${this.formatDate(item.created_at)}</div>
       </div>
     </div>
@@ -181,9 +181,9 @@ class TransactionsPage {
    * используя getTransactionHTML
    * */
   renderTransactions(data){
-    this.element.querySelector(".content").innerHTML = "";
-    for(let i=0; i<data.length; i++){
-      this.element.querySelector(".content").insertAdjacentHTML("beforeEnd", this.getTransactionHTML(data[i]));
-    }
+    this.element.querySelector(".content").innerHTML = data.reduce((acc, item) => {
+      acc += this.getTransactionHTML(item);
+      return acc;
+    }, "");
   }
 }
